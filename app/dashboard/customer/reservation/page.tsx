@@ -6,9 +6,9 @@ import { useMemo, useState } from "react";
 import { Icon } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { PublicFooter, PublicHeader } from "@/components/public-header";
+import { apiUrl } from "@/lib/api";
 import { foods, money } from "@/lib/data";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4100/api";
 const slots = ["10:00", "11:30", "13:00", "16:30", "18:00", "19:30", "21:00"];
 const areas = [["Indoor", "INDOOR"], ["Outdoor", "OUTDOOR"], ["VIP Room", "VIP_ROOM"], ["Non-Smoking", "NON_SMOKING"]];
 

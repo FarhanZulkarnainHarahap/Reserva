@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { saveSession } from "@/lib/session";
+import { apiUrl } from "@/lib/api";
 import { MobileMenu } from "@/components/mobile-menu";
 
 type Food = {
@@ -29,7 +30,6 @@ const foods: Food[] = [
 const categories = ["All Menu", "Appetizer", "Main Course", "Special Menu", "Dessert", "Drinks"];
 const dates = [["Wed", "10"], ["Thu", "11"], ["Fri", "12"], ["Sat", "13"]];
 const slots = [["10:00", "6"], ["11:30", "4"], ["13:00", "2"], ["16:30", "7"], ["18:00", "5"], ["19:30", "3"], ["21:00", "6"]];
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4100/api";
 const areaValues: Record<string, string> = { Indoor: "INDOOR", Outdoor: "OUTDOOR", "VIP Room": "VIP_ROOM", "Non-Smoking": "NON_SMOKING" };
 
 function money(value: number) {
