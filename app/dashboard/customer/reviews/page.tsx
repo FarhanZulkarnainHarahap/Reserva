@@ -1,0 +1,7 @@
+import { Icon } from "@/components/icons";
+import { PageHero } from "@/components/page-hero";
+import { PublicFooter, PublicHeader } from "@/components/public-header";
+
+export default function ReviewsPage() {
+  return <><PublicHeader /><PageHero eyebrow="FROM OUR GUESTS" title="Shared moments." copy="A few kind words from guests who made time for something delicious." /><main className="page-shell reviews-page"><div className="review-cards">{[["Alya Ramadhani", "Anniversary dinner", "Every plate felt considered, and the team made our anniversary so lovely."], ["Dimas Putra", "Weekend dinner", "Warm, unhurried, and quietly special. Booking took less than a minute."], ["Nadia Azzahra", "Sunday lunch", "Our new favorite place for a slow lunch. I am still dreaming about the tiramisu."]].map(([name, label, copy]) => <article key={name}><span>{[1,2,3,4,5].map((star) => <Icon key={star} name="star" size={13} />)}</span><blockquote>&ldquo;{copy}&rdquo;</blockquote><b>{name}</b><small>{label}</small></article>)}</div><form className="review-form"><small>COMPLETED A VISIT?</small><h2>Leave a <em>review.</em></h2><select><option>Select completed reservation</option><option>RSV-119204 - 25 May 2026</option></select><select><option>5 stars</option><option>4 stars</option><option>3 stars</option></select><textarea placeholder="Tell us about your experience..." /><button className="button" type="button">Submit review</button></form></main><PublicFooter /></>;
+}
