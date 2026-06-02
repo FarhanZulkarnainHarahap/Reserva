@@ -228,6 +228,13 @@ blockquote { min-height: 125px; margin: 20px 0 22px; font: 18px/1.58 var(--serif
 .inner-nav nav a, .header-login { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
 .inner-nav > div { display: flex; gap: 17px; align-items: center; }
 .header-login { display: flex; gap: 6px; align-items: center; color: var(--cocoa); }
+.session-profile { display: inline-flex; gap: 8px; align-items: center; color: var(--cocoa); }
+.profile-avatar { display: grid; width: 32px; height: 32px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: var(--cocoa); color: white; font-size: 9px; font-weight: 700; letter-spacing: .7px; }
+.profile-name { max-width: 132px; overflow: hidden; color: inherit; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.nav .header-login.on-hero, .session-profile.on-hero { color: white; }
+.session-profile.on-hero .profile-avatar { background: var(--peach); color: var(--espresso); }
+.mobile-menu-panel .mobile-account { padding: 10px 0; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); color: var(--peach); }
+.mobile-menu-panel .mobile-account .profile-avatar { background: var(--peach); color: var(--espresso); }
 .page-hero { padding: 91px 7vw 78px; background: var(--espresso); text-align: center; }
 .page-hero small, .about-page small, .contact-grid small, .checkout-result > small { color: var(--peach); font-size: 9px; font-weight: 700; letter-spacing: 2.2px; }
 .page-hero h1 { margin: 12px 0; color: white; font: 68px var(--serif); letter-spacing: -2px; }
@@ -455,9 +462,10 @@ blockquote { min-height: 125px; margin: 20px 0 22px; font: 18px/1.58 var(--serif
   .progress { padding-right: 19px; padding-left: 19px; }
   .time-grid { grid-template-columns: repeat(3, 1fr); }
   .inner-nav { padding: 13px 5vw; }
-  .inner-nav nav, .header-login { display: none; }
+  .inner-nav nav, .inner-nav > div > .header-login, .inner-nav > div > .session-profile { display: none; }
   .inner-nav > div { margin-left: auto; }
   .inner-nav .button { padding: 10px; }
+  .nav-actions > .header-login, .nav-actions > .session-profile { display: none; }
   .page-hero { padding: 68px 6vw 60px; }
   .page-hero h1 { font-size: 54px; }
   .menu-detail, .about-page section, .contact-grid, .reviews-page { grid-template-columns: 1fr; }

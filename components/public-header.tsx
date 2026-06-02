@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "./icons";
 import { MobileMenu } from "./mobile-menu";
+import { SessionAccount } from "./session-account";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return <Link className={`logo ${dark ? "dark" : ""}`} href="/"><i>R</i>aserva<span>.</span></Link>;
@@ -10,7 +11,7 @@ export function PublicHeader() {
   return <header className="inner-nav">
     <Logo dark />
     <nav><Link href="/">Home</Link><Link href="/dashboard/customer/menu">Menu</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav>
-    <div><Link className="header-login" href="/auth/login"><Icon name="user" size={16} /> Log in</Link><Link className="button small" href="/dashboard/customer/reservation">Book a table</Link></div>
+    <div><SessionAccount /><Link className="button small" href="/dashboard/customer/reservation">Book a table</Link></div>
     <MobileMenu />
   </header>;
 }

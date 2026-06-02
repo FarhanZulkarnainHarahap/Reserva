@@ -6,6 +6,7 @@ import Link from "next/link";
 import { saveSession } from "@/lib/session";
 import { apiUrl } from "@/lib/api";
 import { MobileMenu } from "@/components/mobile-menu";
+import { SessionAccount } from "@/components/session-account";
 
 type Food = {
   id: number;
@@ -157,7 +158,7 @@ function Reservation({ open, close }: { open: boolean; close: () => void }) {
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || "Login failed.");
-      saveSession(result.token, result.user.role);
+      saveSession(result.token, result.user);
       setCustomerName(result.user.name);
       await submitReservation(result.token);
     } catch (requestError) {
@@ -222,7 +223,7 @@ export default function Home() {
   const shown = useMemo(() => foods.filter((food) => (category === "All Menu" || food.category === category) && food.name.toLowerCase().includes(search.toLowerCase())), [category, search]);
 
   return <main>
-    <header className="nav"><Logo /><nav><Link href="/about">About</Link><Link href="/dashboard/customer/menu">Menu</Link><a href="#experience">Experience</a><Link href="/contact">Contact</Link></nav><div className="nav-actions"><Link className="nav-icon" href="/dashboard/customer/menu"><Icon name="search" /></Link><Link className="nav-icon" href="/dashboard/customer/reservation"><Icon name="bag" /></Link><Link className="button small" href="/dashboard/customer/reservation">Book a table</Link><MobileMenu variant="home" /></div></header>
+    <header className="nav"><Logo /><nav><Link href="/about">About</Link><Link href="/dashboard/customer/menu">Menu</Link><a href="#experience">Experience</a><Link href="/contact">Contact</Link></nav><div className="nav-actions"><Link className="nav-icon" href="/dashboard/customer/menu"><Icon name="search" /></Link><Link className="nav-icon" href="/dashboard/customer/reservation"><Icon name="bag" /></Link><SessionAccount tone="hero" /><Link className="button small" href="/dashboard/customer/reservation">Book a table</Link><MobileMenu variant="home" /></div></header>
     <section className="hero">
       <Image alt="Raserva table setting" height={1200} priority src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1900&q=92" width={1900} />
       <div className="hero-shade" /><div className="hero-copy"><small>WELCOME TO RASERVA</small><h1>Good food.<br /><em>Beautifully timed.</em></h1><p>Thoughtful plates, warm conversations, and a table waiting just for you.</p><div><Link className="button" href="/dashboard/customer/reservation">Reserve your table <Icon name="arrow" size={16} /></Link><Link href="/dashboard/customer/menu">Explore menu <Icon name="arrow" size={16} /></Link></div></div>

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { LuArrowLeft, LuCalendarCheck, LuLogIn, LuMenu, LuX } from "react-icons/lu";
+import { LuArrowLeft, LuCalendarCheck, LuMenu, LuX } from "react-icons/lu";
 import { LogoutButton } from "./logout-button";
+import { SessionAccount } from "./session-account";
 
 type MenuVariant = "public" | "home" | "admin";
 
@@ -24,7 +25,7 @@ export function MobileMenu({ variant = "public" }: { variant?: MenuVariant }) {
       <header><Link href="/" onClick={() => setOpen(false)}><i>R</i>aserva<span>.</span></Link><button aria-label="Close navigation menu" onClick={() => setOpen(false)} type="button"><LuX /></button></header>
       <small>{variant === "admin" ? "RESTAURANT CONSOLE" : "RASERVA DINING"}</small>
       <nav>{links.map(([href, label]) => <Link href={href} key={href} onClick={() => setOpen(false)}>{label}</Link>)}</nav>
-      {variant === "admin" ? <footer><Link href="/" onClick={() => setOpen(false)}><LuArrowLeft /> Back to website</Link><LogoutButton className="mobile-logout" /></footer> : <footer><Link href="/auth/login" onClick={() => setOpen(false)}><LuLogIn /> Log in</Link><Link className="button" href="/dashboard/customer/reservation" onClick={() => setOpen(false)}><LuCalendarCheck /> Book a table</Link></footer>}
+      {variant === "admin" ? <footer><Link href="/" onClick={() => setOpen(false)}><LuArrowLeft /> Back to website</Link><LogoutButton className="mobile-logout" /></footer> : <footer><SessionAccount mobile onNavigate={() => setOpen(false)} /><Link className="button" href="/dashboard/customer/reservation" onClick={() => setOpen(false)}><LuCalendarCheck /> Book a table</Link></footer>}
     </aside>
   </>;
 }
